@@ -47,6 +47,19 @@ services:
       - ./services/mysql/utf8mb4.cnf:/etc/mysql/conf.d/utf8mb4.cnf:ro
     env_file: 
       - ./.env
+    networks: 
+      - my_network
+
+  nodejs:
+    build: ./docker/nodejs
+    container_name: frontend
+    hostname: frontend
+    ports: 
+      - 3000:3000
+    volumes: 
+      - ./src/front:/var/www/html
+    networks: 
+      - my_network
 
 volumes:
   db_data:
