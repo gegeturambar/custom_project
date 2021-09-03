@@ -27,6 +27,8 @@ services:
     #   DATABASE_URL: "mysql://$MYSQL_USER:$MYSQL_PASSWORD@mysql:3306/$MYSQL_DATABASE"
   
   php-fpm:
+    extra_hosts: 
+      - "host.docker.internal:host-gateway"
     build: ./docker/php
     container_name: php
     networks: 
